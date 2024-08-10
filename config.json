@@ -1,16 +1,10 @@
 {
   "mysql": [
     "latest",
-    "8.1",
-    "8.0",
-    "8",
-    "9",
     "5.7"
   ],
   "redis": [
-    "latest",
-    "7",
-    "7.4"
+    "latest"
   ],
   "redis/redis-stack-server": [
     "latest"
@@ -19,11 +13,9 @@
     "nightly"
   ],
   "zookeeper": [
-    "latest",
-    "3.9"
+    "latest"
   ],
   "nacos/nacos-server": [
-    "latest",
-    "v2.4.0.1"
+    "latest"
   ]
 }
