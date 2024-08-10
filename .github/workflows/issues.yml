@@ -2,26 +2,26 @@ name: Issue Trigger
 
 on:
   issues:
-    types: [opened]
+    types: [ opened,reopened ]
 jobs:
   run_python_script:
     runs-on: ubuntu-latest
     steps:
-    - name: Checkout code
-      uses: actions/checkout@v2
-    - name: Set up Python 3.12
-      uses: actions/setup-python@v3
-      with:
-        python-version: "3.12"
-    - name: Login to Docker Registry
-      run: echo "${{ secrets.REPO_PWD }}" | docker login -u ${{ secrets.REPO_USERNAME }} --password-stdin ${{ secrets.REPO_ENDPOINT }}
-    - name: Install dependencies
-      run: |
-        python -m pip install --upgrade pip
-        pip install -r requirements.txt
-    - name: Execute Python script
-      run: python mover.py ${{ github.event.issue.body }}
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        ISSUES_ID: ${{ github.event.issue.number }}
-        REPO_NAME: ${{ github.event.issue.full_name }}
+      - name: Checkout code
+        uses: actions/checkout@v2
+      - name: Set up Python 3.12
+        uses: actions/setup-python@v3
+        with:
+          python-version: "3.12"
+      - name: Login to Docker Registry
+        run: echo "${{ secrets.REPO_PWD }}" | docker login -u ${{ secrets.REPO_USERNAME }} --password-stdin ${{ secrets.REPO_ENDPOINT }}
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+      - name: Execute Python script
+        run: python mover.py ${{ github.event.issue.body }}
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          ISSUES_ID: ${{ github.event.issue.number }}
+          REPO_NAME: ${{ github.event.issue.full_name }}
