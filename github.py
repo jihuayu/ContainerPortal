@@ -23,9 +23,8 @@ def comment_issues(comment):
 
 
 def edit_issue_comment(comment_id, comment):
-    print(comment_id)
-    if GITHUB_TOKEN and ISSUES_ID and REPO_NAME:
-        url = f'https://api.github.com/repos/{REPO_NAME}/issues/{ISSUES_ID}/comments/{comment_id}'
+    if GITHUB_TOKEN and ISSUES_ID and REPO_NAME and comment_id:
+        url = f'https://api.github.com/repos/{REPO_NAME}/issues/comments/{comment_id}'
         headers = {
             'Authorization': f'token {GITHUB_TOKEN}',
             'Accept': 'application/vnd.github.v3+json'
@@ -34,7 +33,7 @@ def edit_issue_comment(comment_id, comment):
             'body': comment
         }
         response = requests.patch(url, headers=headers, data=json.dumps(data))
-        print(response.json())
+        return response.json()
 
 
 def close_issues():
