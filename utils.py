@@ -10,4 +10,4 @@ def move_image(client, repo, tag):
     image.tag(TARGET_REPO, new_tag)
     client.images.push(TARGET_REPO, new_tag)
     print(f"搬运 {repo}:{tag} 成功")
-    return f'{TARGET_REPO}:{tag}'
+    return f'{TARGET_REPO}:{new_tag}'
