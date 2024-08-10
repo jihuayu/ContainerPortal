@@ -14,7 +14,8 @@ if __name__ == '__main__':
     if len(sys.argv) < 2:
         print('Usage: python mover.py <repo>:<tag>')
         sys.exit(1)
-    data = comment_issues(f"正在拉去镜像 {sys.argv[1]} 请稍后")
+    data = comment_issues(f"正在拉取镜像 {sys.argv[1]} 请稍后")
+    print(data)
     arg = sys.argv[1].split(':')
     repo = arg[0]
     tag = len(arg) >= 2 and arg[1] or 'latest'
