@@ -24,7 +24,7 @@ if __name__ == '__main__':
         arg = sys.argv[1].strip().split(':')
         repo = arg[0]
         tag = len(arg) >= 2 and arg[1] or 'latest'
-        
+
     image_url = move_image(client, repo, tag)
     edit_issue_comment(data.get('id'),
                        f"传输完毕，请运行以下指令拉取镜像 `{sys.argv[1]}`\n"

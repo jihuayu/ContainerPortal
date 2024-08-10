@@ -18,6 +18,13 @@ jobs:
       uses: actions/setup-python@v3
       with:
         python-version: "3.12"
+    - name: Cache dependencies
+      uses: actions/cache@v2
+      with:
+        path: ~/.cache/pip
+        key: ${{ runner.os }}-pip-${{ hashFiles('**/requirements.txt') }}
+        restore-keys: |
+          ${{ runner.os }}-pip-
     - name: Login to Docker Registry
       run: echo "${{ secrets.REPO_PWD }}" | docker login -u ${{ secrets.REPO_USERNAME }} --password-stdin ${{ secrets.REPO_ENDPOINT }}
     - name: Install dependencies
