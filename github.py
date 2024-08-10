@@ -23,6 +23,7 @@ def comment_issues(comment):
 
 
 def edit_issue_comment(comment_id, comment):
+    print(comment_id)
     if GITHUB_TOKEN and ISSUES_ID and REPO_NAME:
         url = f'https://api.github.com/repos/{REPO_NAME}/issues/{ISSUES_ID}/comments/{comment_id}'
         headers = {
@@ -33,7 +34,7 @@ def edit_issue_comment(comment_id, comment):
             'body': comment
         }
         response = requests.patch(url, headers=headers, data=json.dumps(data))
-        return response.json()
+        print(response.json())
 
 
 def close_issues():
