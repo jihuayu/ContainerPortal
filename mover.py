@@ -46,7 +46,7 @@ if __name__ == '__main__':
         print('Usage: python mover.py <repo>:<tag>')
         sys.exit(1)
 
-    arg = sys.argv[1].split('|')
+    arg = sys.argv[1].split(':')
     repo = arg[0]
     tag = len(arg) >= 2 and arg[1] or 'latest'
     image_url = move_image(client, repo, tag)
