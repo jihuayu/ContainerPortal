@@ -4,7 +4,7 @@
 
 ## 使用方法
 
-创建 issues 写上你要传输的镜像名字，可参考以下 issues
+创建 issue 写上你要传输的镜像名字，可参考以下 issue
 
 - https://github.com/jihuayu/ContainerPortal/issues/6
 - https://github.com/jihuayu/ContainerPortal/issues/4
