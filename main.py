@@ -1,13 +1,8 @@
 import json
-import os
 from typing import Dict, List
-
 import docker
 
 from utils import move_image
-
-env_var_value = os.environ.get('TARGET_REPO')
-TARGET_REPO = env_var_value or 'registry.cn-hangzhou.aliyuncs.com/jihuayu/public'
 
 with open('config.json', 'r') as file:
     data: Dict[str, List[str]] = json.load(file)

@@ -1,9 +1,3 @@
-import json
-import os
-from typing import Dict
-
-import requests
-
 from github import comment_issues, close_issues, edit_issue_comment
 from utils import move_image
 import docker
