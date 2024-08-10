@@ -24,4 +24,4 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           ISSUES_ID: ${{ github.event.issue.number }}
-          REPO_NAME: ${{ github.event.issue.full_name }}
+          REPO_NAME: ${{ github.event.repository.full_name }}
