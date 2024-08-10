@@ -1,6 +1,6 @@
 # Container Portal
 
-将 Docker Hub 的镜像上传到阿里云的镜像私服
+将 Docker Hub 的镜像上传到阿里云的镜像私服，以应对 Docker Hub 被墙了的问题。
 
 ## 使用方法
 
