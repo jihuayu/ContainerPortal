@@ -1,31 +1,44 @@
+import json
 import os
+
+import requests
 
 from utils import move_image
 import docker
 import sys
-from github import Github, Auth
 
 GITHUB_TOKEN = os.environ.get('GITHUB_TOKEN')
 ISSUES_ID = os.environ.get('ISSUES_ID')
 REPO_NAME = os.environ.get('REPO_NAME')
 
-if GITHUB_TOKEN:
-    auth = Auth.Token
-    g = Github(GITHUB_TOKEN)
-
 client = docker.from_env()
 
-
 def comment_issues(comment):
-    if g and ISSUES_ID:
-        repo = g.get_repo(REPO_NAME)
-        repo.get_issue(int(ISSUES_ID)).create_comment(comment)
+    if GITHUB_TOKEN and ISSUES_ID and REPO_NAME:
+        url = f'https://api.github.com/repos/{REPO_NAME}/issues/{ISSUES_ID}/comments'
+        headers = {
+            'Authorization': f'token {GITHUB_TOKEN}',
+            'Accept': 'application/vnd.github.v3+json'
+        }
+        data = {
+            'body': comment
+        }
+        response = requests.post(url, headers=headers, data=json.dumps(data))
+        return response.json()
 
 
 def close_issues():
-    if g and ISSUES_ID:
-        repo = g.get_repo(REPO_NAME)
-        repo.get_issue(int(ISSUES_ID)).edit(state='closed')
+    if GITHUB_TOKEN and ISSUES_ID and REPO_NAME:
+        url = f'https://api.github.com/repos/{REPO_NAME}/issues/{ISSUES_ID}'
+        headers = {
+            'Authorization': f'token {GITHUB_TOKEN}',
+            'Accept': 'application/vnd.github.v3+json'
+        }
+        data = {
+            'state': 'closed'
+        }
+        response = requests.patch(url, headers=headers, data=json.dumps(data))
+        return response.json()
 
 
 if __name__ == '__main__':
