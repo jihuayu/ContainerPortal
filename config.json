@@ -4,10 +4,15 @@
     "5.7"
   ],
   "redis": [
-    "latest"
+    "latest",
+    "6-alpine"
   ],
   "redis/redis-stack-server": [
     "latest"
+  ],
+  "postgres": [
+    "latest",
+    "15-alpine"
   ],
   "apache/kvrocks": [
     "nightly"
@@ -16,6 +21,15 @@
     "latest"
   ],
   "nacos/nacos-server": [
+    "latest"
+  ],
+  "langgenius/dify-sandbox": [
+    "latest"
+  ],
+  "langgenius/dify-web": [
+    "latest"
+  ],
+  "langgenius/dify-api": [
     "latest"
   ]
 }
