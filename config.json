@@ -31,5 +31,12 @@
   ],
   "langgenius/dify-api": [
     "latest"
+  ],
+  "python": [
+    "3-slim",
+    "3-bullseye",
+    "2.7-jessie",
+    "2.7-slim",
+    "latest"
   ]
 }
