@@ -30,7 +30,7 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r requirements.txt
       - name: Execute Python script
-        run: python mover.py ${{ github.event.issue.body }}
+        run: python mover.py ${{ github.event.issue.body }} ${{ join(github.event.issue.labels.*.name, ' ') }}
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           ISSUES_ID: ${{ github.event.issue.number }}
